@@ -3,12 +3,12 @@ function Scores() {
 }
 
 Scores.prototype.update = function (modifier) {
-	if (keysDown[38]) { // Player holding up
+	if (keysDown[keys.up]) { // Player holding up
 		
 		if(selectValue >1) {
 			selectValue--;
 		}
-		keysDown[38] = false;
+		keysDown[keys.up] = false;
 	}
 	if (keysDown[40]) { // Player holding down
 		
@@ -32,6 +32,11 @@ Scores.prototype.update = function (modifier) {
 	
 	if (keysDown[13]) { // Player holding space
 		keysDown[13] = false;
+	}
+	
+	if (keysDown[keys.escape]){
+		currentObject = menu;
+		keysDown[keys.escape] = false;
 	}
 	
 	this.render();

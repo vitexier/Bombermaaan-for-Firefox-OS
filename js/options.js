@@ -34,6 +34,11 @@ Options.prototype.update = function (modifier) {
 		keysDown[13] = false;
 	}
 	
+	if (keysDown[keys.escape]){
+		currentObject = menu;
+		keysDown[keys.escape] = false;
+	}
+	
 	this.render();
 }
 

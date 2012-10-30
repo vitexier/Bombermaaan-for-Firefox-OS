@@ -19,7 +19,7 @@ addEventListener("keydown", function (e) {
 	}
 }, false);
 
-addEventListener('touchstart', pressdown, true);
+//addEventListener('touchstart', pressdown, true);
 
 // Create the canvas
 var canvas = document.createElement("canvas");
@@ -29,6 +29,7 @@ canvas.height = screenHeight;
 
 document.body.appendChild(canvas);
 
+/*
 var states = {
 	game : 'game',
 	menu : 'menu',
@@ -38,6 +39,7 @@ var states = {
 
 var globalState = states.menu;
 
+*/
 var menu = new Menu();
 var game;
 var options;

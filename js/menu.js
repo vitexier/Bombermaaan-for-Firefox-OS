@@ -25,34 +25,34 @@ Menu.prototype.exitGame = function () {
 }
 
 Menu.prototype.update = function (modifier) {
-	if (keysDown[38]) { // Player holding up
+	if (keysDown[keys.up]) { // Player holding up
 		
 		if(selectValue >1) {
 			selectValue--;
 		}
-		keysDown[38] = false;
+		keysDown[keys.up] = false;
 	}
-	if (keysDown[40]) { // Player holding down
+	if (keysDown[keys.down]) { // Player holding down
 		
 		if(selectValue < 3){
 			selectValue++;
 		}
-		keysDown[40] = false;
+		keysDown[keys.down] = false;
 	}
-	if (keysDown[37]) { // Player holding left
+	if (keysDown[keys.left]) { // Player holding left
 		
-		keysDown[37] = false;
+		keysDown[keys.left] = false;
 	}
-	if (keysDown[39]) { // Player holding right
+	if (keysDown[keys.right]) { // Player holding right
 		
-		keysDown[39] = false;
+		keysDown[keys.right] = false;
 	}
 	
-	if (keysDown[32]) { // Player holding enter
-		keysDown[32] = false;
+	if (keysDown[keys.enter]) { // Player holding enter
+		keysDown[keys.enter] = false;
 	}
 	
-	if (keysDown[13]) { // Player holding space
+	if (keysDown[keys.space]) { // Player holding space
 		if(selectValue === 1){
 			this.launchGame();
 			console.log('jeux lancé');
@@ -65,7 +65,7 @@ Menu.prototype.update = function (modifier) {
 		if(selectValue === 3){
 			this.options();
 		}
-		keysDown[13] = false;
+		keysDown[keys.space] = false;
 	}
 	
 	this.render();

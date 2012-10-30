@@ -1,5 +1,3 @@
-
-
 var map = new Map("map");
 var action = {"haut":false,"bas":false,"gauche":false,"droite":false};
 
