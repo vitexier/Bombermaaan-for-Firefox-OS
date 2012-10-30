@@ -30,85 +30,26 @@ canvas.height = screenHeight;
 //canvas.fillRect(0,0,200,100);
 document.body.appendChild(canvas);
 
-
-// Update game objects
-var update = function (modifier) {
-	if (keysDown[38]) { // Player holding up
-		
-		if(selectValue >1) {
-			selectValue--;
-		}
-		keysDown[38] = false;
-	}
-	if (keysDown[40]) { // Player holding down
-		
-		if(selectValue < 3){
-			selectValue++;
-		}
-		keysDown[40] = false;
-	}
-	if (keysDown[37]) { // Player holding left
-		//console.log('left');
-		keysDown[37] = false;
-	}
-	if (keysDown[39]) { // Player holding right
-		
-		keysDown[39] = false;
-	}
-	
-	if (keysDown[32]) { // Player holding right
-		console.log('go');
-		keysDown[32] = false;
-	}
-
-	
+var states = {
+	game : 'game',
+	menu : 'menu',
+	editor : 'editor',
+	options : 'options'
 };
 
+var globalState = states.menu;
 
-var render = function () {
+var menu = new Menu();
+var game;
 
-	//Création du menu
-	ctx.fillStyle="black";
-	ctx.fillRect(0,0,screenWidth,screenHeight);
-	ctx.fillStyle = "rgb(250, 250, 250)";
-	ctx.font = "128px SquareFont";
-	ctx.textAlign = "center";
-	ctx.textBaseline = "top";
-	ctx.fillText("Bombermaaan", eval(screenWidth/2) ,100);
-	
-	ctx.font = "30px Test";
-	ctx.textAlign = "center";
-	ctx.textBaseline = "center";
-	
-	switch(selectValue) {
-		case 1: ctx.drawImage(bomberman, 0, 0, 32, 32, screenWidth/3 , 300, 32, 32)
-				ctx.fillText(" New Game ", screenWidth/2,300);
-				ctx.fillText(" Scores ", screenWidth/2,335);
-				ctx.fillText(" Options ", screenWidth/2,370);
-				break;
-		case 2: ctx.drawImage(bomberman, 0, 0, 32, 32, screenWidth/3 , 335, 32, 32)
-				ctx.fillText(" New Game ", screenWidth/2,300);
-				ctx.fillText(" Scores ", screenWidth/2,335);
-				ctx.fillText(" Options ", screenWidth/2,370);
-				break;
-		case 3: ctx.drawImage(bomberman, 0, 0, 32, 32, screenWidth/3 , 370, 32, 32)
-				ctx.fillText(" New Game ", screenWidth/2,300);
-				ctx.fillText(" Scores ", screenWidth/2,335);
-				ctx.fillText(" Options ", screenWidth/2,370);
-				break;	
-			
-				
-	}
-
-};
+var currentObject = menu;
 
 // The main game loop
 var main = function () {
 	var now = Date.now();
 	var delta = now - then;
 
-	update(delta / 1000);
-	render();
+	currentObject.update(delta / 1000);
 
 	then = now;
 };
