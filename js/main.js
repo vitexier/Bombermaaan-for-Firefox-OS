@@ -1,7 +1,5 @@
 var screenWidth = window.innerWidth;
 var screenHeight = window.innerHeight;
-var cursorSelected = ">";
-var cursorUnselected = "";
 
 var selectValue = 1;
 
@@ -21,19 +19,20 @@ addEventListener("keydown", function (e) {
 	}
 }, false);
 
+addEventListener('touchstart', pressdown, true);
+
 // Create the canvas
 var canvas = document.createElement("canvas");
 var ctx = canvas.getContext("2d");
 canvas.width = screenWidth;
 canvas.height = screenHeight;
-//canvas.fillStyle="black";
-//canvas.fillRect(0,0,200,100);
+
 document.body.appendChild(canvas);
 
 var states = {
 	game : 'game',
 	menu : 'menu',
-	editor : 'editor',
+	scores : 'scores',
 	options : 'options'
 };
 
@@ -41,6 +40,8 @@ var globalState = states.menu;
 
 var menu = new Menu();
 var game;
+var options;
+var scores;
 
 var currentObject = menu;
 

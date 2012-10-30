@@ -1,0 +1,22 @@
+body {
+	margin: 0;
+	padding: 0;
+
+}
+
+canvas {
+	position : absolute;
+	top : 0;
+	left : 0;
+	right : 0;
+	bottom : 0;
+}
+@font-face {
+	font-family: SquareFont;
+	src: url('../resources/fonts/Square.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Test;
+	src: url('../resources/fonts/8-BIT WONDER.TTF') format('truetype');
+}

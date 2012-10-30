@@ -7,6 +7,17 @@ Menu.prototype.launchGame = function () {
 	currentObject = game;
 }
 
+Menu.prototype.options = function () {
+	options = new Options();
+	currentObject = options;
+
+}
+
+Menu.prototype.scores = function () {
+	scores = new Scores();
+	currentObject = scores;
+
+}
 
 Menu.prototype.exitGame = function () {
 	game = undefined;
@@ -29,7 +40,7 @@ Menu.prototype.update = function (modifier) {
 		keysDown[40] = false;
 	}
 	if (keysDown[37]) { // Player holding left
-		//console.log('left');
+		
 		keysDown[37] = false;
 	}
 	if (keysDown[39]) { // Player holding right
@@ -38,7 +49,6 @@ Menu.prototype.update = function (modifier) {
 	}
 	
 	if (keysDown[32]) { // Player holding enter
-		console.log('go');
 		keysDown[32] = false;
 	}
 	
@@ -46,6 +56,14 @@ Menu.prototype.update = function (modifier) {
 		if(selectValue === 1){
 			this.launchGame();
 			console.log('jeux lancé');
+		}
+		
+		if(selectValue === 2){
+			this.scores();
+		}
+		
+		if(selectValue === 3){
+			this.options();
 		}
 		keysDown[13] = false;
 	}
@@ -82,8 +100,6 @@ Menu.prototype.render = function () {
 				ctx.fillText(" New Game ", screenWidth/2,300);
 				ctx.fillText(" Scores ", screenWidth/2,335);
 				ctx.fillText(" Options ", screenWidth/2,370);
-				break;	
-			
-				
+				break;				
 	}
 }
