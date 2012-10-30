@@ -1,9 +1,14 @@
+body {
+	margin: 0;
+	padding: 0;
+
+}
 @font-face {
 	font-family: SquareFont;
-	src: url('../resources/squarefont/Square.ttf') format("truetype");
+	src: url('../resources/squarefont/Square.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: Test;
-	src: url('../resources/8bit_wonder/8-BIT WONDER.TTF') format("truetype");
+	src: url('../resources/8bit_wonder/8-BIT WONDER.TTF') format('truetype');
 }

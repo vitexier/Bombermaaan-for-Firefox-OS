@@ -1,12 +1,12 @@
-var screenWidth = document.width;
-var screenHeight = document.height;
+var screenWidth = window.innerWidth;
+var screenHeight = window.innerHeight;
 var cursorSelected = ">";
 var cursorUnselected = "";
 
 var selectValue = 1;
 
 var bomberman = new Image();
-bomberman.scr = "../resources/images/bomberMan.png";
+bomberman.src = "resources/images/bomberman.png";
 
 // Handle keyboard controls
 var keysDown = {};
@@ -74,27 +74,27 @@ var render = function () {
 	ctx.font = "128px SquareFont";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "top";
-	ctx.fillText('Bombermaaan ',screenWidth/2,100);
+	ctx.fillText("Bombermaaan", eval(screenWidth/2) ,100);
 	
 	ctx.font = "30px Test";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "center";
 	
-	console.log(selectValue);
-	
 	switch(selectValue) {
-		case 1: ctx.drawImage(bomberman, 20, 20);
-				ctx.fillText(cursorSelected + "  New Game ", screenWidth/2,300);
-				ctx.fillText("Scores ", screenWidth/2,335);
-				ctx.fillText("Options ", screenWidth/2,370);
+		case 1: ctx.drawImage(bomberman, 0, 0, 32, 32, screenWidth/3 , 300, 32, 32)
+				ctx.fillText(" New Game ", screenWidth/2,300);
+				ctx.fillText(" Scores ", screenWidth/2,335);
+				ctx.fillText(" Options ", screenWidth/2,370);
 				break;
-		case 2: ctx.fillText("New Game ", screenWidth/2,300);
-				ctx.fillText(cursorSelected + "  Scores ", screenWidth/2,335);
-				ctx.fillText("Options ", screenWidth/2,370);
+		case 2: ctx.drawImage(bomberman, 0, 0, 32, 32, screenWidth/3 , 335, 32, 32)
+				ctx.fillText(" New Game ", screenWidth/2,300);
+				ctx.fillText(" Scores ", screenWidth/2,335);
+				ctx.fillText(" Options ", screenWidth/2,370);
 				break;
-		case 3: ctx.fillText("New Game ", screenWidth/2,300);
-				ctx.fillText("Scores ", screenWidth/2,335);
-				ctx.fillText(cursorSelected + "  Options ", screenWidth/2,370);
+		case 3: ctx.drawImage(bomberman, 0, 0, 32, 32, screenWidth/3 , 370, 32, 32)
+				ctx.fillText(" New Game ", screenWidth/2,300);
+				ctx.fillText(" Scores ", screenWidth/2,335);
+				ctx.fillText(" Options ", screenWidth/2,370);
 				break;	
 			
 				
