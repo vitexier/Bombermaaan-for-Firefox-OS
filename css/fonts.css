@@ -1,0 +1,9 @@
+@font-face {
+	font-family: SquareFont;
+	src: url('../resources/squarefont/Square.ttf') format("truetype");
+}
+
+@font-face {
+	font-family: Test;
+	src: url('../resources/8bit_wonder/8-BIT WONDER.TTF') format("truetype");
+}
