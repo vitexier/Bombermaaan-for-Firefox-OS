@@ -1,10 +1,16 @@
 function Menu() {
+//	addEventListener("click", function (e) {
+//	e.stopPropagation();
+//	clickablet();
+//	console.log(e.clientX);
+//}, false);
 
 }
 
 Menu.prototype.launchGame = function () {
 	game = new Game();
 	currentObject = game;
+	
 }
 
 Menu.prototype.options = function () {
@@ -24,6 +30,20 @@ Menu.prototype.exitGame = function () {
 	currentObject = menu;
 }
 
+var clickablet = function (){
+	alert("toto");
+}
+
+Menu.prototype.pressdown = function (e){
+	consol.log("Touch event down");
+	alert("toto");
+}
+
+Menu.prototype.pressdown = function (e){
+	consol.log("Touch event up ");
+	alert("toto");
+}
+
 Menu.prototype.update = function (modifier) {
 	if (keysDown[keys.up]) { // Player holding up
 		
@@ -34,7 +54,7 @@ Menu.prototype.update = function (modifier) {
 	}
 	if (keysDown[keys.down]) { // Player holding down
 		
-		if(selectValue < 3){
+		if(selectValue < 4){
 			selectValue++;
 		}
 		keysDown[keys.down] = false;
@@ -59,12 +79,17 @@ Menu.prototype.update = function (modifier) {
 		}
 		
 		if(selectValue === 2){
-			this.scores();
+			window.location = "multiplayer.html";
 		}
 		
 		if(selectValue === 3){
+			this.scores();
+		}
+		
+		if(selectValue === 4){
 			this.options();
 		}
+		
 		keysDown[keys.space] = false;
 	}
 	
@@ -86,20 +111,29 @@ Menu.prototype.render = function () {
 	ctx.textBaseline = "center";
 	
 	switch(selectValue) {
-		case 1: ctx.drawImage(bomberman, 0, 0, 32, 32, screenWidth/3 , 300, 32, 32)
+		case 1: ctx.drawImage(bomberman, 0, 0, 32, 32, screenWidth/4 , 300, 32, 32)
 				ctx.fillText(" New Game ", screenWidth/2,300);
-				ctx.fillText(" Scores ", screenWidth/2,335);
-				ctx.fillText(" Options ", screenWidth/2,370);
+				ctx.fillText(" Multiplayer ", screenWidth/2,335);
+				ctx.fillText(" Scores ", screenWidth/2,370);
+				ctx.fillText(" Options ", screenWidth/2,405);
 				break;
-		case 2: ctx.drawImage(bomberman, 0, 0, 32, 32, screenWidth/3 , 335, 32, 32)
+		case 2: ctx.drawImage(bomberman, 0, 0, 32, 32, screenWidth/4 , 335, 32, 32)
 				ctx.fillText(" New Game ", screenWidth/2,300);
-				ctx.fillText(" Scores ", screenWidth/2,335);
-				ctx.fillText(" Options ", screenWidth/2,370);
+				ctx.fillText(" Multiplayer ", screenWidth/2,335);
+				ctx.fillText(" Scores ", screenWidth/2,370);
+				ctx.fillText(" Options ", screenWidth/2,405);
 				break;
-		case 3: ctx.drawImage(bomberman, 0, 0, 32, 32, screenWidth/3 , 370, 32, 32)
+		case 3: ctx.drawImage(bomberman, 0, 0, 32, 32, screenWidth/4 , 370, 32, 32)
 				ctx.fillText(" New Game ", screenWidth/2,300);
-				ctx.fillText(" Scores ", screenWidth/2,335);
-				ctx.fillText(" Options ", screenWidth/2,370);
-				break;				
+				ctx.fillText(" Multiplayer ", screenWidth/2,335);
+				ctx.fillText(" Scores ", screenWidth/2,370);
+				ctx.fillText(" Options ", screenWidth/2,405);
+				break;
+		case 4: ctx.drawImage(bomberman, 0, 0, 32, 32, screenWidth/4 , 405, 32, 32)
+				ctx.fillText(" New Game ", screenWidth/2,300);
+				ctx.fillText(" Multiplayer ", screenWidth/2,335);
+				ctx.fillText(" Scores ", screenWidth/2,370);
+				ctx.fillText(" Options ", screenWidth/2,405);
+				break;						
 	}
 }

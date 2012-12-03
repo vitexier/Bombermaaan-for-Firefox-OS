@@ -2,36 +2,46 @@ function Options() {
 
 }
 
+
+/*var keys = {
+	up :  38,
+	down : 40,
+	left : 37,
+	right : 39,
+	space: 32,
+	enter : 13,
+	escape : 27
+}*/
 Options.prototype.update = function (modifier) {
-	if (keysDown[38]) { // Player holding up
+	if (keysDown[keys.up]) { // Player holding up
 		
 		if(selectValue >1) {
 			selectValue--;
 		}
-		keysDown[38] = false;
+		keysDown[keys.up] = false;
 	}
-	if (keysDown[40]) { // Player holding down
+	if (keysDown[keys.down]) { // Player holding down
 		
 		if(selectValue < 3){
 			selectValue++;
 		}
-		keysDown[40] = false;
+		keysDown[keys.down] = false;
 	}
-	if (keysDown[37]) { // Player holding left
+	if (keysDown[keys.left]) { // Player holding left
 		
-		keysDown[37] = false;
+		keysDown[keys.left] = false;
 	}
-	if (keysDown[39]) { // Player holding right
+	if (keysDown[keys.right]) { // Player holding right
 		
-		keysDown[39] = false;
+		keysDown[keys.right] = false;
 	}
 	
-	if (keysDown[32]) { // Player holding enter
-		keysDown[32] = false;
+	if (keysDown[keys.space]) { // Player holding space
+		keysDown[keys.space] = false;
 	}
 	
-	if (keysDown[13]) { // Player holding space
-		keysDown[13] = false;
+	if (keysDown[keys.enter]) { // Player holding enter
+		keysDown[keys.enter] = false;
 	}
 	
 	if (keysDown[keys.escape]){

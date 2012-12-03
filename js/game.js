@@ -1,94 +1,107 @@
+
+
 function Game() {
 	this.x = screenWidth / 2;
 	this.y = screenHeight / 2;
+	//addEventListener('click', alert('toto'), false);
+	//addEventListener('touchend', this.pressup, true);
+}
+
+Game.prototype.pressdown = function (e){
+	consol.log("Touch event down");
+}
+
+Game.prototype.pressdown = function (e){
+	consol.log("Touch event up ");
 }
 
 var action = {"haut":false,"bas":false,"gauche":false,"droite":false};
 
 Game.prototype.event = function () {
-	if (keysDown[38]) { // Player holding up
+	if (keysDown[keys.up]) { // Player holding up
 		action.haut = true;
-		if (keysDown[39] && !action.droite ||
-				keysDown[37] && !action.gauche) {
-			keysDown[38] = false;
+		if (keysDown[keys.right] && !action.droite ||
+				keysDown[keys.left] && !action.gauche) {
+			keysDown[keys.up] = false;
 			action.haut = false;
 		}
-		if (keysDown[40]) {
-			keysDown[38] = false;
-			keysDown[40] = false;
+		if (keysDown[keys.down]) {
+			keysDown[keys.up] = false;
+			keysDown[keys.down] = false;
 			action.haut = false;
 			action.bas = false;
 		}
 	} else {
 		action.haut = false;
-		if (keysDown[38] === undefined && 
-				keysDown[40] === false && 
-				!keysDown[37] && !keysDown[39]) {
-			keysDown[40] = true;
+		if (keysDown[keys.up] === undefined && 
+				keysDown[keys.down] === false && 
+				!keysDown[keys.left] && !keysDown[keys.right]) {
+			keysDown[keys.down] = true;
 			action.bas = true;
 		}
 	}
 	
-	if (keysDown[40]) { // Player holding down
+	if (keysDown[keys.down]) { // Player holding down
 		action.bas = true;
-		if (keysDown[39] && !action.droite ||
-				keysDown[37] && !action.gauche) {
-			keysDown[40] = false;
+		if (keysDown[keys.right] && !action.droite ||
+				keysDown[keys.left] && !action.gauche) {
+			keysDown[keys.down] = false;
 			action.bas = false;
 		}
 	} else {
+
 		action.bas = false;
-		if (keysDown[40] === undefined && 
-				keysDown[38] === false && 
-				!keysDown[37] && !keysDown[39]) {
-			keysDown[38] = true;
+		if (keysDown[keys.down] === undefined && 
+				keysDown[keys.up] === false && 
+				!keysDown[keys.left] && !keysDown[keys.right]) {
+			keysDown[keys.up] = true;
 			action.haut = true;
 		}
-	}
+	}	
 	
-	if (keysDown[37]) { // Player holding left
+	if (keysDown[keys.left]) { // Player holding left
 		action.gauche = true;
-		if (keysDown[38] && action.haut ||
-				keysDown[40] && action.bas) {
-			keysDown[37] = false;
+		if (keysDown[keys.up] && action.haut ||
+				keysDown[keys.down] && action.bas) {
+			keysDown[keys.left] = false;
 			action.gauche = false;
 		}
-		if (keysDown[39]) {
-			keysDown[37] = false;
-			keysDown[39] = false;
+		if (keysDown[keys.right]) {
+			keysDown[keys.left] = false;
+			keysDown[keys.right] = false;
 			action.gauche = false;
 			action.droite = false;
 		}
 	} else {
 		action.gauche = false;
-		if (keysDown[37] === undefined && 
-				keysDown[39] === false && 
-				!keysDown[38] && !keysDown[40]) {
-			keysDown[39] = true;
+		if (keysDown[keys.left] === undefined && 
+				keysDown[keys.right] === false && 
+				!keysDown[keys.up] && !keysDown[keys.down]) {
+			keysDown[keys.right] = true;
 			action.droite = true;
 		}
 	}
 	
-	if (keysDown[39]) { // Player holding right
+	if (keysDown[keys.right]) { // Player holding right
 		action.droite = true;
-		if (keysDown[38] && action.haut ||
-				keysDown[40] && action.bas) {
-			keysDown[39] = false;
+		if (keysDown[keys.up] && action.haut ||
+				keysDown[keys.down] && action.bas) {
+			keysDown[keys.right] = false;
 			action.droite = false;
 		}
 	} else {
 		action.droite = false;
-		if (keysDown[39] === undefined && 
-				keysDown[37] === false && 
-				!keysDown[38] && !keysDown[40]) {
-			keysDown[37] = true;
+		if (keysDown[keys.right] === undefined && 
+				keysDown[keys.left] === false && 
+				!keysDown[keys.up] && !keysDown[keys.down]) {
+			keysDown[keys.left] = true;
 			action.gauche = true;
 		}
 	}
 
-	if (keysDown[27]) {
+	if (keysDown[keys.escape]) {
 		menu.exitGame();
-		keysDown[27] = false;
+		keysDown[keys.escape] = false;
 	}
 }
 
@@ -97,7 +110,7 @@ Game.prototype.update = function (length) {
 	
 	if (action.haut) {
 		this.y -= length * 100;
-	} else if (action.droite) {
+	 } else if (action.droite) {
 		this.x += length * 100;
 	} else if (action.bas) {
 		this.y += length * 100;

@@ -19,8 +19,6 @@ addEventListener("keydown", function (e) {
 	}
 }, false);
 
-//addEventListener('touchstart', pressdown, true);
-
 // Create the canvas
 var canvas = document.createElement("canvas");
 var ctx = canvas.getContext("2d");
@@ -29,17 +27,6 @@ canvas.height = screenHeight;
 
 document.body.appendChild(canvas);
 
-/*
-var states = {
-	game : 'game',
-	menu : 'menu',
-	scores : 'scores',
-	options : 'options'
-};
-
-var globalState = states.menu;
-
-*/
 var menu = new Menu();
 var game;
 var options;
